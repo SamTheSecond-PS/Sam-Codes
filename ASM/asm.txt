@@ -24,7 +24,8 @@ rest is stack
 -r - registers -> 64bit;
 -eax regs -> 32bit;
 -ax -> 16 bit;
--al -> 8bit
+-al -> lower 8bit or ax;
+-ah -> upper 8 bits of ax;
 
 __FUNCTIONS__:
 Conditionls_
@@ -50,13 +51,16 @@ arithmetics_
 
 ____
 
+call -> jumps to a function and pushes return address on stack
 -mov -> moves [smth], into [smth]
 -lea -> loads the address or calculates an address
--ret -> relative addressing (relative to RIP)
+-ret -> return from function
 used so code works no matter where program loads in memory
--rel -> uhh... windows api combine with lea i guess
+-rel -> gives the relative address, used with lea. RIP + offset = rel
+-resb -> reserves bytes for later use
 -movsb -> moves one byte from rsi ro rdi, used with rep so it copies
          rcx amount of times.
+-extern -> adds a API or module from external sources   
 -db -> allocates one byte for stuff like: "hello" and other strings.
 -dw -> rserves 2 bytes, for integers, strings etc.
 -dd -> for bigger stuffs and strings, reserves 4
@@ -66,5 +70,99 @@ used so code works no matter where program loads in memory
 
 SECTIONS:
 section .data -> data for the main code to use
+--usually like: [name of var] [dq, db, dd or smth else] [value], 0
 section .text -> main code
 section .bss -> uninitialized variables
+--usually like: [var name] resb [bytes reserved]
+
+
+---NOTE---
+always sub rsp, 40 for stack alignment
+
+Common Win APIs:
+
+__ExitProcess__
+This is the api used to exit a program.
+Usage:
+mov rcx, 0
+call ExitProcess
+
+__MessageBoxA__
+This makes a GUI box for alerts and asking user.
+ARGUMENTS
+        rcx -> parent window, usually 0
+        rdx -> message text
+        r8 -> box title
+        r9 -> button and icon type
+RETURN VALUES:
+in rax:
+RETURN VALUE
+1 ->  OK pressed
+2 ->  Cancel 
+3 ->  Abort
+4 ->  Retry
+5 ->  Ignore
+6 ->  Yes 
+7 ->  No 
+10 -> Try Again
+11 -> Continue
+
+VALUES:
+Button type:
+VALUE TYPE
+0 ->  OK 
+1 ->  OK/Cancel
+2 ->  Abort/Retry/Ignore
+3 ->  Yes/No/Cancel
+4 ->  Yes/No
+5 ->  Retry/Cancel
+6 ->  Cancel/Try Again/Continue
+
+Icon type:
+VALUE  ICON
+16 -> Error
+32 -> Question
+48 -> Warning
+64 -> Info
+
+--Combine buttons using or
+
+BUTTON HIGHLIGHT:
+VALUE HIGHLIGHT
+0 ->  first button
+256 -> second button
+512 -> Third button
+768 -> fourth button
+
+__GetStdHandle__
+This is the API for printing text, reading and showing error to terminal
+
+WriteConsoleA:
+Writed text to terminal
+ARGUMENTS:
+rcx -> console output handle 
+rdx -> pointer to text
+r8 -> text length
+r9 -> pointer to chars written [resb for written]
+mov qword -> [rsp + 32], 0
+
+qword becomes NULL as no value for that
+
+Basically:
+sub rsp,40
+set rcx rdx r8 r9
+put arg5 at [rsp+32]
+call function
+
+handle = -11
+
+ReadConsoleA:
+This reads input from console.
+ARGUMENTS:
+rcx -> console input handle
+rdx -> buffer [in .bss]
+r8 -> max characters
+r9 -> pointer to charsRead [resb for read]
+mov qword -> [rsp + 32], 0
+
+handle = -10
