@@ -1,0 +1,24 @@
+impo4t sqlite3
+
+use pathlib for reading and finding stuff
+
+sql.connect(filename) = connects to other files for usage
+sql.execute("cmd") = executes SQL code
+
+if you reading a file using execute() a iterable cursor object comes from which
+you can for row in cursor to read each row an print line by line
+
+example code:
+import sqlite3 as sql, json
+from pathlib import Path
+
+
+movies = json.loads(Path(Path("../JSONFiles/movies.json")).read_text())
+
+with sql.connect("db.sqlite3") as conn:
+    command = "SELECT * FROM Movies"
+    CURSOR = conn.execute(command)
+    for row in CURSOR:
+        print(row)
+    movies = CURSOR.fetchall()
+    print(movies)

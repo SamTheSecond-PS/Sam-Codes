@@ -1,0 +1,26 @@
+Path___ import from pathlib
+
+commands:
+
+Path([new path]) = makes a new path
+Path.exists()
+Path.is_file()
+Path.is_dir()
+print(Path.name)
+print(path.stem) = prints path/file name without extensions
+print(path.suffix) = same as .stem but prints only extensions
+print(path.parent) = prints the parent file/folder
+print(path.absolute) = prints the FULL path from C:
+p = path.with_suffix(".txt") = results in __init__.txt
+path.mkdir()  
+path.rmdir()
+path.rename()
+path.iterdir() = gets generator objects for dirs
+path.glob("**/*.py" or "*.py") = gets all the x files
+path.are_glob = prints dirsand all its children
+path.stat() = gives creation time, and other states etc
+path.read_bytes() = gives the binary version of the file
+path.read_text() = reads as read
+path.write_text("____") = prints smth in the file
+path.write_byte() = writes bytes
+if you wanna copy a file, use shutil import, not Path

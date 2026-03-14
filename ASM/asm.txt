@@ -1,0 +1,70 @@
+This is the notes about how to use assembly:
+
+Registers are temporary storage for values:
+-rax -> maths stuff inside here, also return values from funcs.
+-rbx -> general purpose to store data and do others.
+-rcx -> loop counter, loops use it as... int i = 0 in C loops.
+-rdx -> extra data registers mostly used in arithmetics mult and div.
+-rsi -> source for copying.
+-rdi -> destination for copying.
+-rbp -> base pointer, used for stack frames in funcs.
+-rsp-> points to top of stack.
+
+extras:
+r8-15
+
+calling convention for windows:
+1 arg -> rcx
+2 arg -> rdx
+3 arg -> r8
+4 arg -> r9
+rest is stack
+
+--sizes:
+-r - registers -> 64bit;
+-eax regs -> 32bit;
+-ax -> 16 bit;
+-al -> 8bit
+
+__FUNCTIONS__:
+Conditionls_
+
+-cmp -> does arg1 - arg2 and sets flags used by:
+-jmp -> jumping to another section unconditionally
+-jg -> jump if greater
+-jl -> jump if lesser
+-je -> jump if equal
+-jne -> jump if not equal
+-jge -> jump if greater or equal
+-jle -> jump if lesser or equal
+
+arithmetics_
+
+-add -> adds reg 1 with reg2
+-sub -> subs reg 1 with reg2
+-mul -> multiplies reg1 with rax then stores value in rdx and rax
+        combined, rax only if result less that 64 bit, else split between
+        the 2 registers.
+-div -> we divdide the value in rdx:rax by reg1 and store the quotient in rax
+        and remainder in rdx.
+
+____
+
+-mov -> moves [smth], into [smth]
+-lea -> loads the address or calculates an address
+-ret -> relative addressing (relative to RIP)
+used so code works no matter where program loads in memory
+-rel -> uhh... windows api combine with lea i guess
+-movsb -> moves one byte from rsi ro rdi, used with rep so it copies
+         rcx amount of times.
+-db -> allocates one byte for stuff like: "hello" and other strings.
+-dw -> rserves 2 bytes, for integers, strings etc.
+-dd -> for bigger stuffs and strings, reserves 4
+-dq -> biggest reserve, reserves 8 bytes
+-equ -> #define or const for assembly, used as: __ equ __
+- '$ - __' -> here it calculates the size of ___.
+
+SECTIONS:
+section .data -> data for the main code to use
+section .text -> main code
+section .bss -> uninitialized variables

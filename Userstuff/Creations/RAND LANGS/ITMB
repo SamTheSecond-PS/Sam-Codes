@@ -1,0 +1,32 @@
+ungenerated x WillBe: aInt, 23 -aft BootSec(1), placement: "heap"
+
+generate x asType: aLst -contains{[1, 2, 3, 4, 5, 6]}
+generate x2 asType: aLst -contains{[will()]}
+for Cvar(val, type: TypeOf(conatinesIn(x))) in x, do:
+    if val #div 0 #eqq 0, then:
+        x2.AddVal(val)
+    no?, then:
+        Do_nothing()
+console.wrt((x2), SepVal(","))          
+
+generate x asType: aDict -containes{{1:"a", 2:"e", 3:"i", 4:"o", 5:"u"}}
+generate str asType: aString -holds{("hello guys!")}
+
+func runn(sn: String) -> String:
+    returnin st asType: Cref -gets((CoptR(s)))
+    for Cvar(s, type: String) in st, do:
+    RunEmUp(s):
+        ver-1: s #eqq x.get_value(key: 1)
+        replace(String: s with: x.get_value(key: 1))
+        ver-2: s #eqq x.get_value(key: 2)
+        replace(String: s with: x.get_value(key: 2))
+        ver-3: s #eqq x.get_value(key: 3)
+        replace(String: s with: x.get_value(key: 3))
+        ver-4: s #eqq x.get_value(key: 4)
+        replace(String: s with: x.get_value(key: 4))
+        ver-5: s #eqq x.get_value(key: 5)
+        replace(String: s with: x.get_value(key: 5))
+
+    return st
+
+runn(str)

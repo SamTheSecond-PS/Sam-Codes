@@ -1,0 +1,15 @@
+make DATA-
+    +__build::
+        (continue) ({update-section, NOW}) |||
+        (expand)  ({updated-sec, NUMDEF -eq- 23}) |||   
+        (@show)   ({updated-sec, 23})
+    __::  |||
+    +__content::
+        (continue) ({update-section, NOW})
+        (expand) /(LABEL)-(TEXT)\[hello, world!]
+    
+    (()), CONTINUE::build::
+        (changable) ({1: SH 34, ___, execute-in::})
+        (UN-changable) ({1: SH 45})
+    +FINISH::_
+FULL RUN SH PL DATA[/ALL\]

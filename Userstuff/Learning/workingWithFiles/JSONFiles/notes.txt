@@ -1,0 +1,35 @@
+import json
+
+json.dumps(objName) = allows to turn dict obj into JSON item
+example to make:
+
+[
+movies = [ 
+    {"id": 1, "Title": "Terminator", "year": 1989 },
+    {"id":2, "Title":"Kindergarden Cop", "year":1993}
+]
+data = json.dumps(movies)
+
+]
+
+use pathlib, Path("filename.json").write_text(objname) to write a json obj
+into a json file
+
+
+json.loads(obj) = loads a json file that came from a read item of another file
+
+example usage:
+[
+
+import json
+from pathlib import Path
+
+prt = print
+ask = input
+
+
+data = Path("movies.json").read_text()
+movies = json.loads(data)
+prt(movies[0]["title"])
+
+]

@@ -1,0 +1,19 @@
+zipfile import is necessary
+
+Zipfile("___") = makes a Zipfile
+zip.write(___) = writes in a zip file
+zip.close() if using with ____ as __: use zip.close() to end
+ex:
+from pathlib import Path
+from zipfile import ZipFile
+
+with ZipFile("flies.zip", "w") as zip:
+    for path in Path("ecommerce").rglob("*.*"):
+        zip.write(path)
+zip.close()
+
+zip.namelist() = shoes all the files name in the zip file
+zip.getinfo(_file adress_) = shoes info of the zip 
+___.file_size = shoes size of file
+___.compress_file = compresses the file
+zip.extractall() = extracts everything and changes to another file

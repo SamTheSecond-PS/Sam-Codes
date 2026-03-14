@@ -1,0 +1,5 @@
+Cursor Module License:
+
+- You may use and modify this code for personal or educational purposes.
+- You may NOT publish, redistribute, or sell the Cursor Module in any form.
+- You must give credit to the original author (Sam) as (Sarvesh) if using or modifying it.

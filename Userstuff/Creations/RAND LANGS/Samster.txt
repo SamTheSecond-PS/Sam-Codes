@@ -1,0 +1,201 @@
+mov 1: R1, #i32;
+mov 3: R2 #i32;
+mov $__str__:"hello!, world": R3 #String;
+__start:
+    __ask: OS{
+        perm: cnsl, I/O; 
+        data: reg R3;
+        device: x84_68 
+    }
+    access, cnsl: prt reg R3 #String
+    jmp_if_notperm;
+__stop;
+del R1, 1; #delete
+del R2, 3: #delete
+del R3, $__str__; #delete
+
+
+mov $__lst__:[]: R1; #lst
+@x, indexes: 1, 2, 3, 4, 5, 6, 7, 8, 9;
+impl x, R1;
+mov 1: R2; #i32
+mov 2: R3; #i32
+mov 3: R4; #i32
+mov 4: E1; #i32
+mov 5: E2; #i32
+mov 6: E3; #i32
+mov 7: E4; #i32
+mov 8: T1; #i32
+mov 9: T2; #i32
+add R2, R1; 
+add R3, R1;
+add R4, R1;
+add E1, R1;
+add E2, R1;
+add E3, R1;
+add E4, R1;
+add T1, R1;
+add T2, R1;
+add 0, T3;
+__start:
+    __ask: OS{
+        perm: I/O, modification;
+        data: reg R1;
+        device: x84_64
+    }
+    jump_if_noperm;
+    access perm: I/O;
+    acces perm: modification;
+    entr reg R1;
+    access reg R1: 
+        {   
+            @x, 1;
+            cmp 20, ;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 1, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 2, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 3, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 4, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 5, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 6, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 7, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @8, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+__stop;
+del R1; #delete
+del R2; #delete
+del R3; #delete
+del R4; #delete
+del E1; #delete
+del E2; #delete
+del E3; #delete
+del E4; #delete
+del T1; #delete
+del T2; #delete
+del T3; #delete
+
+________________________________________________________________________
+
+inc STD_INPUT, TSD_OUTPUT
+
+sect -- data:
+    mov C41: N1; #tkn
+    N1 acs -> STD_INPUT, STD_OUTPUT;
+    mov $__str__:"enter anything": R2; #String
+    mov $__str__:"You entered: ": R1; #String
+
+
+sect --URCGN:
+    crt val: Y2, val:
+        [String], [i32], [f64], [URCGN];
+
+sect --cd:
+    __start:
+        call 12;
+        __ask: OS{
+            perm: N1;
+            data: reg, [crt]; 
+            device: x86_64;
+            RTNV: T1;
+        }
+        chk T1:
+            jump_if_cancelled -> _exit;
+            jump_if_1 -> _perm;
+            jump_if_0 -> _perm;
+
+        _perm:
+            acs STD_OUTPUT:
+                prt reg: R2;
+            jmp _cont;
+
+        _cont:
+            acs STD_INPUT:
+                wt val, Y2;
+            jmp _last;
+
+        _last:
+            acs STD_OUTPUT:
+                prt reg, val: R1, @conc, Y2;
+                jmp _exit
+        
+        _exit:
+            call 11;
+
+    __stop;
+
+del reg;
+
+________________________________________________________________________
+
+inc STD_OUTPUT
+
+sect -- data:
+    mov $__str__:"A": R1; #String
+    mov C41: N1; #tkn
+
+sect -- cd:
+    __start:
+        call 12;
+        __ask: OS{
+            perm: N1;
+            device: x86_64;
+            data: reg;
+            RTNV: T1;
+        }
+        chk T1:
+            jump_if_noperm -> __exit;
+            jump_if_1 -> __prgm;
+            jump_if_0 -> __prgm;
+
+        __prgm:
+            acs STD_OUTPUT:
+                prt reg: R1;
+            jmp __exit;
+
+        __exit:
+            call 11;
+    __stop;
+del reg;
+    
+     

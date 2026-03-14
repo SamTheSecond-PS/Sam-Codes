@@ -1,0 +1,32 @@
+TIME:
+import time, pretty familiar;
+time.time(), gets the time from 'the start of beginning'~for your OS
+
+ex:
+import time
+
+def send_emails():
+    for i in range(1, 100):
+        pass
+
+start = time.time()
+send_emails()
+end = time.time()
+duration = end - start
+print(duration)
+
+DATETIMES:
+datetime(year, month, date) = class creation
+datetime.now() = allows to see the current time
+datetime.strptime("original_string", "how_to_parse") = alloes to parse a string into a datetime object. ex: _._("2020\2\20, "%Y\%m\%d")
+here %Y for year, %m for month, %d for date
+datetime.strftime() = allows to make a datetime object into strftime
+ex:
+from datetime import datetime, timedelta
+dt = datetime(2026, 2, 18)
+print(datetime.now())
+dat = dt.strptime("2028/01/01", "%Y/%m/%d")
+
+.days = shows dates 
+.seconds = shows seconds
+.total_duration() = shows total_seconds()

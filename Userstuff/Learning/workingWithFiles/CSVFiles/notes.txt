@@ -1,0 +1,11 @@
+import csv
+
+open the csv for modifications OFC, 
+
+
+-csv.writer(filname), this allows you to write csv-styled values into the csv
+    it gives object so store in var
+writer.writerow(["items", "moreitems" etc]), allows you to write to the csv file
+
+
+-csv.reader(filename), this allowd you to read a csv file, gives obj so store un val

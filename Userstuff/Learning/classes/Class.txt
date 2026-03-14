@@ -1,0 +1,61 @@
+CLASSES_______
+
+__init__ = used for telling what all values should
+           be entered right after the object is created creation
+
+__eq__ = allows the class to compare itself to other
+         classes
+
+__str__ = allows the class items to be printed as string
+
+__repr__ = __str__ but more control and for console items
+
+__len__ = gives class ability to use len()
+
+__getitem__ = allows indexing
+
+__setitem__ = allows changing values using indexes
+
+__add__, __sub__, __mul__, __truediv__ = maths stuff for classes
+
+__bool__ = allows True and False
+
+
+
+
+class used as:
+class [name]:
+    def [function](self,[**parameters])
+        [code]
+
+    [other functions]
+        [other code]
+self is compulsory
+
+class object creation:
+[name] = [class name]()
+[name].[functions]
+
+class example:
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def showstat(self):
+        print(f"name: {self.name}, age: {self.age}")
+
+    def bark(self):
+        print("WOOF!")
+
+dog = Dog("bob", 23)
+dog.showstat()
+dog.bark()
+dog.bark()
+dog.bark()
+
+
+Inheritance___
+inheritance alows other classes to use the class's commands, like a parenet-child relationship
+
+to use just add class [name of class]([name of parent class])

@@ -1,0 +1,173 @@
+ungenerated x WillBe: aInt, 23 -aft BootSec(1), placement: "heap"
+
+generate x asType: aLst -contains{[1, 2, 3, 4, 5, 6]}
+generate x2 asType: aLst -contains{[will()]}
+for Cvar(val, type: TypeOf(conatinesIn(x))) in x, do:
+    if val #div 0 #eqq 0, then:
+        x2.AddVal(val)
+    no?, then:
+        Do_nothing()
+console.wrt((x2), SepVal(","))          
+
+generate x asType: aDict -containes{{1:"a", 2:"e", 3:"i", 4:"o", 5:"u"}}
+generate str asType: aString -holds{("hello guys!")}
+
+func runn(sn: String) -> String:
+    returnin st asType: Cref -gets((CoptR(s)))
+    for Cvar(s, type: String) in st, do:
+    RunEmUp(s):
+        ver-1: s #eqq x.get_value(key: 1)
+        replace(String: s with: x.get_value(key: 1))
+        ver-2: s #eqq x.get_value(key: 2)
+        replace(String: s with: x.get_value(key: 2))
+        ver-3: s #eqq x.get_value(key: 3)
+        replace(String: s with: x.get_value(key: 3))
+        ver-4: s #eqq x.get_value(key: 4)
+        replace(String: s with: x.get_value(key: 4))
+        ver-5: s #eqq x.get_value(key: 5)
+        replace(String: s with: x.get_value(key: 5))
+
+    return st
+
+runn(str)
+            
+_________________ITMB__________________________(short for: "I Tried My Best")
+
+mov 1: R1, #i32;
+mov 3: R2 #i32;
+mov $__str__:"hello!, world": R3 #String;
+__start:
+    __ask: OS{
+        perm: cnsl, I/O; 
+        data: reg R3;
+        device: x84_68 
+    }
+    access, cnsl: prt reg R3 #String
+    jmp_if_notperm;
+__stop;
+del R1, 1; #delete
+del R2, 3: #delete
+del R3, $__str__; #delete
+
+
+mov $__lst__:[]: R1; #lst
+@x, indexes: 1, 2, 3, 4, 5, 6, 7, 8, 9;
+impl x, R1;
+mov 1: R2; #i32
+mov 2: R3; #i32
+mov 3: R4; #i32
+mov 4: E1; #i32
+mov 5: E2; #i32
+mov 6: E3; #i32
+mov 7: E4; #i32
+mov 8: T1; #i32
+mov 9: T2; #i32
+add R2, R1; 
+add R3, R1;
+add R4, R1;
+add E1, R1;
+add E2, R1;
+add E3, R1;
+add E4, R1;
+add T1, R1;
+add T2, R1;
+add 0, T3;
+__start:
+    __ask: OS{
+        perm: I/O, modification;
+        data: reg R1;
+        device: x84_64
+    }
+    jump_if_noperm;
+    access perm: I/O;
+    acces perm: modification;
+    entr reg R1;
+    access reg R1: 
+        {   
+            @x, 1;
+            cmp 20, ;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 1, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 2, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 3, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 4, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 5, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 6, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @x 7, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+        {
+            add @8, T3;
+            cmp 20, T3;
+            jump_if_not_equal;
+            prt reg R1;
+        }
+__stop;
+del R1; #delete
+del R2; #delete
+del R3; #delete
+del R4; #delete
+del E1; #delete
+del E2; #delete
+del E3; #delete
+del E4; #delete
+del T1; #delete
+del T2; #delete
+del T3; #delete
+        
+____________________________________Samster_______________________________
+
+make DATA-
+    +__build::
+        (continue) ({update-section, NOW}) |||
+        (expand)  ({updated-sec, NUMDEF -eq- 23}) |||   
+        (@show)   ({updated-sec, 23})
+    __::  |||
+    +__content::
+        (continue) ({update-section, NOW})
+        (expand) /(LABEL)-(TEXT)\[hello, world!]
+    
+    (()), CONTINUE::build::
+        (changable) ({1: SH 34, ___, execute-in::})
+        (UN-changable) ({1: SH 45})
+    +FINISH::_
+FULL RUN SH PL DATA[/ALL\]
+
+__________________________KERNELpop__________________________________________
+
+
