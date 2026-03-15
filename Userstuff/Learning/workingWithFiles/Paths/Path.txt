@@ -17,9 +17,9 @@ path.rmdir()
 path.rename()
 path.iterdir() = gets generator objects for dirs
 path.glob("**/*.py" or "*.py") = gets all the x files
-path.are_glob = prints dirsand all its children
+path.rglob = prints dirsand all its children
 path.stat() = gives creation time, and other states etc
-path.read_bytes() = gives the binary version of the file
+path.read_byte() = gives the binary version of the file
 path.read_text() = reads as read
 path.write_text("____") = prints smth in the file
 path.write_byte() = writes bytes

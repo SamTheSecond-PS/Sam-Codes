@@ -1,0 +1,11 @@
+orjson import
+
+this provides json, but way better and faster.
+containes 2 function only:
+orjson.loads() & orjson.dumps()
+
+orjson uses bytes for transfer so it is very fast.
+if you want to .loads() a var, you'll have to b'[code]'
+
+orjson.loads([filename.read()]) -> reads a json file
+orjson.dumps(code) -> writes JSON into other places
