@@ -1,7 +1,9 @@
 Metadata-Version: 2.4
 Name: cursor
-Version: 0.1
+Version: 2.0
 Summary: Lightweight text navigation cursor
 Author: Sarvesh
+License-File: LICENSE
 Dynamic: author
+Dynamic: license-file
 Dynamic: summary
