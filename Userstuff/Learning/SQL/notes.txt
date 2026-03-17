@@ -1,0 +1,4 @@
+sqlite3 import
+databases called - .db 
+connect to database using sqlite3.connect()
+modify/use database using cursor() from connect() return var
