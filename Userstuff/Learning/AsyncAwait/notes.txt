@@ -1,0 +1,11 @@
+import asyncio
+
+async -> all the commands with async sync/work at the same time
+await -> waits until signal to run is given/waits a bit
+
+.gather(funcs) -> gathers many functions which are async
+.run(func) -> runs the async functions
+
+to make a async func you need:
+async def [name]
+and only in this are you able to use await

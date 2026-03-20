@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "C:\\Python\\python.exe",
+    "python.analysis.useLibraryCodeForTypes": true,
+    "python.analysis.stubPath": ["C:\\Python\\Lib\\site-packages"]
+}
